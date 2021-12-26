@@ -81,5 +81,36 @@ module.exports = {
         openAnalyzer: false,
       },
     },
+    //{
+    //	resolve: `gatsby-plugin-react-i18next`,
+    //	options: {
+    //	  localeJsonSourceName: `locale`,
+    //	  languages: [`en`, `es`, `pt`],
+    //	  defaultLanguage: `en`,
+    //	  siteUrl: `http://localhost:8000/`,
+    //	  i18nextOptions: {
+    //	    interpolation: {
+    //	      escapeValue: false 
+    //	    },
+    //	    keySeparator: false,
+    //	    nsSeparator: false
+    //	  },
+    //	  pages: [
+    //	    {
+    //	      matchPath: '/:lang?/:slug',
+    //	      getLanguageFromPath: true
+    //	      // excludeLanguages: ['es']
+    //	    },
+    //	  ]
+    //	  projects: [
+    //	    {
+    //	      matchPath: '/:lang?/project/:slug',
+    //	      getLanguageFromPath: true
+    //	      // excludeLanguages: ['es']
+    //	    },
+    //	  ]
+    //	}
+    //}
   ].filter(Boolean),
 }
+
