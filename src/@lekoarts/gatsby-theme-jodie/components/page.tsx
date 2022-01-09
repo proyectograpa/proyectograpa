@@ -25,6 +25,7 @@ type DataProps = {
 }
 
 const Page: React.FC<PageProps<DataProps>> = ({ data: { page }, location }) => (
+
   <Layout color={page.color || undefined}>
     <Seo
       title={page.title}

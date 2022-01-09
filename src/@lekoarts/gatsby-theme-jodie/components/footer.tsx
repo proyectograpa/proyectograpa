@@ -1,9 +1,16 @@
 /** @jsx jsx */
-import { jsx, Link, useThemeUI } from "theme-ui"
+import { jsx, Link, useThemeUI, get } from "theme-ui"
 import { readableColor } from "polished"
 import useSiteMetadata from "../hooks/use-site-metadata"
 
+import React from "react"
+//import { useIntl, Link, FormattedMessage } from "gatsby-plugin-intl"
+import { useIntl, FormattedMessage } from "gatsby-plugin-intl"
+
+
 const Footer = ({ bg }: { bg: string }) => {
+  const intl = useIntl()
+
   const { siteTitle } = useSiteMetadata()
   const {
     theme: { rawColors },
@@ -19,7 +26,7 @@ const Footer = ({ bg }: { bg: string }) => {
     <footer
       sx={{
         position: [`relative`, `relative`, `relative`, `fixed`],
-        width: (t: any): any => [`100%`, `100%`, `100%`, t.sidebar.normal, t.sidebar.wide],
+        width: (t) => [`100%`, `100%`, `100%`, get(t, `sidebar.normal`), get(t, `sidebar.wide`)],
         bottom: 0,
         color: text,
         fontSize: 0,
@@ -42,7 +49,7 @@ const Footer = ({ bg }: { bg: string }) => {
           aria-label="Link to the theme's GitHub repository"
           href="https://github.com/LekoArts/gatsby-themes/tree/main/themes/gatsby-theme-jodie"
         >
-          Theme
+        {intl.formatMessage({ id: "theme" })}
         </Link>
         {` `}
         by

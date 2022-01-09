@@ -1,13 +1,24 @@
 /** @jsx jsx */
-import { jsx, Link as TLink } from "theme-ui"
-import * as React from "react"
+import { jsx } from "theme-ui"
 import { Link } from "gatsby"
 import { readableColor } from "polished"
 import { replaceSlashes } from "../utils/replace-slashes"
 import useJodieConfig from "../hooks/use-jodie-config"
 
+import { useIntl } from "gatsby-plugin-intl"
+
+
+
+
 const Navigation = ({ bg }: { bg: string }) => {
   const { navigation, basePath } = useJodieConfig()
+
+  
+  const intl = useIntl()
+  const locale = intl.locale !== "es" ? `/${intl.locale}` : ""
+
+  const re = '/'+intl.locale
+  var current = location.pathname.replace(re, ""); 
 
   return (
     <nav
@@ -36,11 +47,20 @@ const Navigation = ({ bg }: { bg: string }) => {
       <ul>
         {navigation.map((navItem) => (
           <li key={navItem.slug}>
-            <TLink as={Link} to={replaceSlashes(`/${basePath}/${navItem.slug}`)}>
-              {navItem.name} 
-            </TLink>
+            <Link sx={(t) => ({ ...t.styles?.a })} to={replaceSlashes(`/${locale}/${basePath}/${navItem.slug}`)}>
+              {navItem.name}
+            </Link>
           </li>
         ))}
+        <li>
+          <Link sx={(t) => ({ ...t.styles?.a })} to={replaceSlashes(`/es/${basePath}/${current}`)}>
+		  es
+          </Link>
+          {` `}
+          <Link sx={(t) => ({ ...t.styles?.a })} to={replaceSlashes(`/en/${basePath}/${current}`)}>
+		  en
+          </Link>
+        </li>
       </ul>
     </nav>
   )

@@ -10,6 +10,8 @@ import locales from "../locales"
 import { visuallyHidden } from "../styles/utils"
 import modifyGrid from "../utils/modify-grid"
 
+import { useIntl } from "gatsby-plugin-intl"
+
 type DataProps = {
   projects: {
     nodes: {
@@ -42,6 +44,11 @@ const Homepage: React.FC<PageProps<DataProps>> = ({ data: { pages, projects } })
   const items = modifyGrid(rawItems)
   const itemsCount = items.length
   let divisor = 9
+  
+  // Making useIntl available in the code
+  const intl = useIntl()
+  // Use language iso for the routes
+  const locale = intl.locale !== "es" ? `/${intl.locale}` : ""
 
   for (let i = 0; i < itemsCount; i++) {
     const quotient = itemsCount % divisor
@@ -63,14 +70,13 @@ const Homepage: React.FC<PageProps<DataProps>> = ({ data: { pages, projects } })
         <div className={`item-list div${divisor}`}>
           {items.length > 0 ? (
             items.map((item, index) => (
-              <GridItem to={item.slug} className="item" key={item.title} sx={itemStyles} data-testid={item.title}>
+              <GridItem to={ locale + item.slug} className="item" key={item.title} sx={itemStyles} data-testid={item.title}>
                 <GatsbyImage
                   loading={index === 0 ? `eager` : `lazy`}
                   image={item.cover.childImageSharp.gatsbyImageData}
                   alt=""
                 />
                 <span>{item.title}</span>
-                <span>pepe</span>
               </GridItem>
             ))
           ) : (

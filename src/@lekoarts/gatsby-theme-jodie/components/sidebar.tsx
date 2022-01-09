@@ -1,5 +1,5 @@
 /** @jsx jsx */
-import { jsx } from "theme-ui"
+import { jsx, get } from "theme-ui"
 import { Link } from "gatsby"
 import { readableColor } from "polished"
 import Logo from "../icons/logo"
@@ -7,17 +7,23 @@ import useSiteMetadata from "../hooks/use-site-metadata"
 import useJodieConfig from "../hooks/use-jodie-config"
 import Navigation from "./navigation"
 
+import { useIntl } from "gatsby-plugin-intl"
+
+
 type SidebarProps = { bg: string }
 
 const Sidebar = ({ bg }: SidebarProps) => {
   const { siteTitle } = useSiteMetadata()
   const { basePath } = useJodieConfig()
-
+  // Making useIntl available in the code
+  const intl = useIntl()
+  // Use language iso for the routes
+  const locale = intl.locale !== "es" ? `/${intl.locale}` : ""
   return (
     <header
       sx={{
         p: [3, 3, 4],
-        width: (t: any): any => [`100%`, `100%`, `100%`, t.sidebar.normal, t.sidebar.wide],
+        width: (t) => [`100%`, `100%`, `100%`, get(t, `sidebar.normal`), get(t, `sidebar.wide`)],
         backgroundColor: bg,
         position: [`relative`, `relative`, `relative`, `fixed`],
         height: `100%`,
@@ -32,7 +38,7 @@ const Sidebar = ({ bg }: SidebarProps) => {
       }}
       data-testid="sidebar"
     >
-      <Link to={basePath} aria-label={`${siteTitle}, Back to Home`} sx={{ width: [`3rem`, `4rem`, `4.5rem`, `5rem`] }}>
+      <Link to={locale + basePath} aria-label={`${siteTitle}, Back to Home`} sx={{ width: [`3rem`, `4rem`, `4.5rem`, `5rem`] }}>
         <Logo />
       </Link>
       <div sx={{ py: 4, display: [`none`, `none`, `none`, `block`] }} />
