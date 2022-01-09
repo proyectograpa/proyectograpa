@@ -9,6 +9,8 @@ import GridItem from "./grid-item"
 import locales from "../locales"
 import { visuallyHidden } from "../styles/utils"
 
+import { useIntl } from "gatsby-plugin-intl"
+
 type DataProps = {
   projects: {
     nodes: {
@@ -24,6 +26,10 @@ type DataProps = {
 }
 
 const Project: React.FC<PageProps<DataProps>> = ({ data: { projects }, location }) => (
+  // // Making useIntl available in the code
+  // const intl = useIntl()
+  // // Use language iso for the routes
+  // const locale = intl.locale !== "es" ? `/${intl.locale}` : ""
   <Layout>
     <Seo title="Projects" pathname={location.pathname} />
     <h1 sx={visuallyHidden} data-testid="page-title">

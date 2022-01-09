@@ -8,8 +8,6 @@ import useJodieConfig from "../hooks/use-jodie-config"
 import { useIntl } from "gatsby-plugin-intl"
 
 
-
-
 const Navigation = ({ bg }: { bg: string }) => {
   const { navigation, basePath } = useJodieConfig()
 
@@ -17,8 +15,9 @@ const Navigation = ({ bg }: { bg: string }) => {
   const intl = useIntl()
   const locale = intl.locale !== "es" ? `/${intl.locale}` : ""
 
-  const re = '/'+intl.locale
-  var current = location.pathname.replace(re, ""); 
+  const re = '/' + intl.locale
+  const current = location.pathname.replace(re, ""); 
+
 
   return (
     <nav
@@ -52,15 +51,6 @@ const Navigation = ({ bg }: { bg: string }) => {
             </Link>
           </li>
         ))}
-        <li>
-          <Link sx={(t) => ({ ...t.styles?.a })} to={replaceSlashes(`/es/${basePath}/${current}`)}>
-		  es
-          </Link>
-          {` `}
-          <Link sx={(t) => ({ ...t.styles?.a })} to={replaceSlashes(`/en/${basePath}/${current}`)}>
-		  en
-          </Link>
-        </li>
       </ul>
     </nav>
   )

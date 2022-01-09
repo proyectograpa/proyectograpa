@@ -4,12 +4,22 @@ import { readableColor } from "polished"
 import useSiteMetadata from "../hooks/use-site-metadata"
 
 import React from "react"
+
 //import { useIntl, Link, FormattedMessage } from "gatsby-plugin-intl"
+
+import { replaceSlashes } from "../utils/replace-slashes"
+import useJodieConfig from "../hooks/use-jodie-config"
+
 import { useIntl, FormattedMessage } from "gatsby-plugin-intl"
 
 
 const Footer = ({ bg }: { bg: string }) => {
   const intl = useIntl()
+  const { navigation, basePath } = useJodieConfig()
+
+  const re = '/' + intl.locale
+  var current = location.pathname.replace(re, ""); 
+  //console.log(current)
 
   const { siteTitle } = useSiteMetadata()
   const {
@@ -42,7 +52,20 @@ const Footer = ({ bg }: { bg: string }) => {
       }}
     >
       <div>
-        &copy; {new Date().getFullYear()} by {siteTitle}.
+        <Link href={replaceSlashes(`/${basePath}/${current}`)}>
+		  Es
+        </Link>
+        {` | `}
+        <Link href={replaceSlashes(`/en/${basePath}/${current}`)}>
+		  En
+        </Link>
+      </div>
+      <div>
+        &copy; {new Date().getFullYear()}
+         {` `}
+         {intl.formatMessage({ id: "by" })}
+         {` `}
+         {siteTitle}.
       </div>
       <div>
         <Link
@@ -52,7 +75,7 @@ const Footer = ({ bg }: { bg: string }) => {
         {intl.formatMessage({ id: "theme" })}
         </Link>
         {` `}
-        by
+        {intl.formatMessage({ id: "by" })}
         {` `}
         <Link
           aria-label="Link to the theme author's website"
