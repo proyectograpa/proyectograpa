@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-pages-404-jsx",
+    "path": "/en/404.html",
+    "result": {"pageContext":{"language":"en","intl":{"language":"en","languages":["es","en"],"messages":{"about":"About","comments":"Commets","home":"Home","theme":"Theme","by":"by"},"routed":true,"originalPath":"/404.html","redirect":false,"defaultLanguage":"es"}}},
+    "staticQueryHashes": ["1922044513","2744905544","318001574"]}
