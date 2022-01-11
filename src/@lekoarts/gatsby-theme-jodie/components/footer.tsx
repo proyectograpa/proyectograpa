@@ -18,8 +18,11 @@ const Footer = ({ bg }: { bg: string }) => {
   const { navigation, basePath } = useJodieConfig()
 
   const re = '/' + intl.locale
-  var current = location.pathname.replace(re, ""); 
-  //console.log(current)
+  //https://stackoverflow.com/questions/68590841/
+  let current = ''
+  if (typeof window !== "undefined") {
+  	current = location.pathname.replace(re, ""); 
+  }
 
   const { siteTitle } = useSiteMetadata()
   const {

@@ -9,14 +9,18 @@ import { useIntl } from "gatsby-plugin-intl"
 
 
 const Navigation = ({ bg }: { bg: string }) => {
+  const intl = useIntl()
   const { navigation, basePath } = useJodieConfig()
 
-  
-  const intl = useIntl()
   const locale = intl.locale !== "es" ? `/${intl.locale}` : ""
-
   const re = '/' + intl.locale
-  const current = location.pathname.replace(re, ""); 
+  //https://stackoverflow.com/questions/68590841/
+  let current = ''
+  if (typeof window !== "undefined") {
+  	current = location.pathname.replace(re, ""); 
+  }
+  
+
 
 
   return (
