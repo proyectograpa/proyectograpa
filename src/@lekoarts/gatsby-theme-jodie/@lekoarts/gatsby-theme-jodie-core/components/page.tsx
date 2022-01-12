@@ -4,6 +4,7 @@ import Page from "../../../components/page"
 
 type DataProps = {
   page: {
+    lang: string
     title: string
     slug: string
     excerpt: string

@@ -5,7 +5,8 @@ import { readableColor } from "polished"
 import { replaceSlashes } from "../utils/replace-slashes"
 import useJodieConfig from "../hooks/use-jodie-config"
 
-import { useIntl } from "gatsby-plugin-intl"
+//import { useIntl } from "gatsby-plugin-intl"
+import { useIntl, FormattedMessage } from "gatsby-plugin-intl"
 
 
 const Navigation = ({ bg }: { bg: string }) => {
@@ -51,7 +52,8 @@ const Navigation = ({ bg }: { bg: string }) => {
         {navigation.map((navItem) => (
           <li key={navItem.slug}>
             <Link sx={(t) => ({ ...t.styles?.a })} to={replaceSlashes(`/${locale}/${basePath}/${navItem.slug}`)}>
-              {navItem.name}
+              
+            {intl.formatMessage({ id: navItem.name })}
             </Link>
           </li>
         ))}
