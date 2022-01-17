@@ -15,6 +15,7 @@ import { useIntl } from "gatsby-plugin-intl"
 type DataProps = {
   projects: {
     nodes: {
+      lang: string
       slug: string
       title: string
       cover: {
@@ -27,6 +28,7 @@ type DataProps = {
   }
   pages: {
     nodes: {
+      lang: string
       slug: string
       title: string
       cover: {
@@ -76,7 +78,7 @@ const Homepage: React.FC<PageProps<DataProps>> = ({ data: { pages, projects } })
                   image={item.cover.childImageSharp.gatsbyImageData}
                   alt=""
                 />
-                <span>{item.title}</span>
+                <span>pepe {item.title}</span>
               </GridItem>
             ))
           ) : (
@@ -89,5 +91,4 @@ const Homepage: React.FC<PageProps<DataProps>> = ({ data: { pages, projects } })
     </Layout>
   )
 }
-
 export default Homepage

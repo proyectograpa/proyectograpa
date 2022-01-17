@@ -29,7 +29,6 @@ const Page: React.FC<PageProps<DataProps>> = ({ data: { page }, location }) => (
 
   <Layout color={page.color || undefined}>
     <Seo
-      lang={page.lang}
       title={page.title}
       description={page.excerpt}
       pathname={location.pathname}

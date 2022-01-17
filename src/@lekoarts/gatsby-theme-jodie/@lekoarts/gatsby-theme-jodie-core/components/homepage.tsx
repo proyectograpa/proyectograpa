@@ -6,6 +6,7 @@ import Homepage from "../../../components/homepage"
 type DataProps = {
   projects: {
     nodes: {
+      lang: string
       slug: string
       title: string
       cover: {
@@ -18,6 +19,7 @@ type DataProps = {
   }
   pages: {
     nodes: {
+      lang: string
       slug: string
       title: string
       cover: {

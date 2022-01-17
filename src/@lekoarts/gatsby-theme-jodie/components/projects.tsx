@@ -9,11 +9,14 @@ import GridItem from "./grid-item"
 import locales from "../locales"
 import { visuallyHidden } from "../styles/utils"
 
-import { useIntl } from "gatsby-plugin-intl"
+//import { useIntl } from "gatsby-plugin-intl"
+//const intl = useIntl()
+//let current_lang = intl.locale
 
 type DataProps = {
   projects: {
     nodes: {
+      lang: string
       shortTitle: string
       slug: string
       cover: {

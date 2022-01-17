@@ -15,8 +15,8 @@ const Navigation = ({ bg }: { bg: string }) => {
 
   const locale = intl.locale !== "es" ? `/${intl.locale}` : ""
   const re = '/' + intl.locale
-  //https://stackoverflow.com/questions/68590841/
   let current = ''
+  //https://stackoverflow.com/questions/68590841/
   if (typeof window !== "undefined") {
   	current = location.pathname.replace(re, ""); 
   }

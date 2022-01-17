@@ -1,6 +1,10 @@
 import { IGatsbyImageData } from "gatsby-plugin-image"
+//import { filterByLang } from "./resolver-templates";
+//import { filterBySlug } from "@lekoarts/gatsby-theme-jodie/src/utils/resolver-templates";
+import { useIntl } from "gatsby-plugin-intl"
 
 export interface IGridItem {
+  lang: string
   slug: string
   title: string
   cover: {
@@ -12,11 +16,26 @@ export interface IGridItem {
 }
 
 function defaultResolver(data: IGridItem[]): IGridItem[] {
+  //console.log(data)
   return data
 }
 
-function modifyGrid(data: IGridItem[], resolver = defaultResolver): IGridItem[] {
-  return resolver(data)
+export function filterByLang(
+    data: IGridItem[],
+    langFilter: string[]
+  ) {
+  return data.filter((d) => langFilter.includes(d.lang))
+}
+
+function modifyGrid(
+    data: IGridItem[],
+    //resolver = defaultResolver
+    resolver = filterByLang
+  ): IGridItem[] {
+  console.log(data)
+  //return resolver(data)
+  let intl = useIntl()
+  return resolver(data, [intl.locale, null])
 }
 
 /**
@@ -31,5 +50,4 @@ function modifyGrid(data: IGridItem[], resolver = defaultResolver): IGridItem[] 
  *
  * const modifyGrid = (data) => filterBySlug(data, ["/about"])
  */
-
 export default modifyGrid
