@@ -3,6 +3,7 @@ import ProjectComponent from "../components/project"
 
 export default ProjectComponent
 
+//projects: allProject(sort: { fields: date, order: DESC }, limit: 1) {
 export const query = graphql`
   query ($slug: String!, $formatString: String!, $relativeDirectory: String!) {
     project(slug: { eq: $slug }) {

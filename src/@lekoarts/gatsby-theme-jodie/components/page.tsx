@@ -25,24 +25,25 @@ type DataProps = {
   }
 }
 
-const Page: React.FC<PageProps<DataProps>> = ({ data: { page }, location }) => (
+const Page: React.FC<PageProps<DataProps>> = ({ data: { page }, location }) => {
 
-  <Layout color={page.color || undefined}>
-    <Seo
-      title={page.title}
-      description={page.excerpt}
-      pathname={location.pathname}
-      image={page.cover.childImageSharp.resize.src}
-    />
-    <div
-      sx={{
-        variant: page.custom ? `content.custom` : `content.page`,
-      }}
-      data-testid="page-content"
-    >
-      <MDXRenderer>{page.body}</MDXRenderer>
-    </div>
-  </Layout>
-)
-
+  return(
+    <Layout color={page.color || undefined}>
+      <Seo
+        title={page.title}
+        description={page.excerpt}
+        pathname={location.pathname}
+        image={page.cover.childImageSharp.resize.src}
+      />
+      <div
+        sx={{
+          variant: page.custom ? `content.custom` : `content.page`,
+        }}
+        data-testid="page-content"
+      >
+        <MDXRenderer>{page.body}</MDXRenderer>
+      </div>
+    </Layout>
+  )
+}
 export default Page

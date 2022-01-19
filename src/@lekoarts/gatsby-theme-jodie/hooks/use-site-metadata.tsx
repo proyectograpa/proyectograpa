@@ -1,5 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 
+import { useIntl } from "gatsby-plugin-intl"
+
 type Props = {
   site: {
     siteMetadata: {
@@ -17,6 +19,7 @@ type Props = {
 }
 
 const useSiteMetadata = () => {
+
   const data = useStaticQuery<Props>(graphql`
     query {
       site {
@@ -33,6 +36,9 @@ const useSiteMetadata = () => {
       }
     }
   `)
+
+  const intl = useIntl()
+  data.site.siteMetadata.langRequested = intl.locale
 
   return data.site.siteMetadata
 }

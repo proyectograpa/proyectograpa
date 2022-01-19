@@ -3,7 +3,7 @@ import ProjectsComponent from "../components/projects"
 
 export default ProjectsComponent
 
-    //projects: allProject(sort: { fields: date, order: DESC }, limit: $homepageProjectLimit) {
+    //projects: allProject(sort: { fields: date, order: DESC }, limit: 1) {
 export const query = graphql`
   query {
     projects: allProject(sort: { fields: date, order: DESC }) {
