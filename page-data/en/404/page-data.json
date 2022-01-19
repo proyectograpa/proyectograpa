@@ -1,6 +1,6 @@
 {
     "componentChunkName": "component---src-pages-404-jsx",
     "path": "/en/404/",
-    "result": {"pageContext":{"language":"en","intl":{"language":"en","languages":["es","en"],"messages":{"about":"About","comments":"Commets","home":"Home","theme":"Theme","by":"by"},"routed":true,"originalPath":"/404/","redirect":false,"defaultLanguage":"es"}}},
+    "result": {"pageContext":{"language":"en","intl":{"language":"en","languages":["es","en"],"messages":{"about":"About","comments":"Commets","home":"Home","theme":"Theme","by":"by","Projects":"Projects","Art":"Art","About":"About"},"routed":true,"originalPath":"/404/","redirect":false,"defaultLanguage":"es"}}},
     "staticQueryHashes": ["1922044513","2744905544","318001574"],
     "matchPath": "/en/*"}
