@@ -36,6 +36,7 @@ module.exports = {
       resolve: `@lekoarts/gatsby-theme-jodie`,
       // See the theme's README for all available options
       options: {
+        homepageProjectLimit: 9999,
         navigation: [
           { name: `Projects`, slug: `/projects` },
           { name: `Art`, slug: `/art` },

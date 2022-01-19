@@ -18,6 +18,7 @@ type DataProps = {
       lang: string
       slug: string
       title: string
+      shortTitle: string
       cover: {
         childImageSharp: {
           gatsbyImageData: IGatsbyImageData
@@ -78,7 +79,7 @@ const Homepage: React.FC<PageProps<DataProps>> = ({ data: { pages, projects } })
                   image={item.cover.childImageSharp.gatsbyImageData}
                   alt=""
                 />
-                <span>pepe {item.title}</span>
+                <span>{item.title}</span>
               </GridItem>
             ))
           ) : (

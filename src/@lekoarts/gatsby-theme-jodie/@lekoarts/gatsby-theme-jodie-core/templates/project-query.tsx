@@ -12,6 +12,7 @@ export const query = graphql`
       date(formatString: $formatString)
       slug
       title
+      lang
       shortTitle
       category
       cover {

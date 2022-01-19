@@ -8,7 +8,9 @@ export const query = graphql`
     projects: allProject(sort: { fields: date, order: DESC }) {
       nodes {
         shortTitle
+        title
         slug
+        lang
         cover {
           childImageSharp {
             gatsbyImageData(width: 1200, quality: 90)

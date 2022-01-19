@@ -15,6 +15,7 @@ type DataProps = {
     color: string
     date: string
     slug: string
+    lang: string
     title: string
     shortTitle: string
     category: string

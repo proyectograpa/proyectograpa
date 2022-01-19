@@ -7,6 +7,7 @@ export interface IGridItem {
   lang: string
   slug: string
   title: string
+  shortTitle: string
   cover: {
     childImageSharp: {
       gatsbyImageData: IGatsbyImageData
@@ -14,6 +15,19 @@ export interface IGridItem {
   }
   __typename: "MdxProject" | "MdxPage"
 }
+
+export interface IGridProject{
+  lang: string
+  slug: string
+  shortTitle: string
+  cover: {
+    childImageSharp: {
+      gatsbyImageData: IGatsbyImageData
+    }
+  }
+  __typename: "MdxProject" | "MdxPage"
+}
+
 
 function defaultResolver(data: IGridItem[]): IGridItem[] {
   //console.log(data)
@@ -35,6 +49,7 @@ function modifyGrid(
   console.log(data)
   //return resolver(data)
   let intl = useIntl()
+  //lengua = (intl.locale !== null) ? intl.locale  : 'es';
   return resolver(data, [intl.locale, null])
 }
 
