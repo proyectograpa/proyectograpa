@@ -13,7 +13,7 @@ import { visuallyHidden } from "../styles/utils"
 // const intl = useIntl()
 // let current_lang = intl.locale
 
-import modifyProjectGrid from "../utils/modify-grid"
+import modifyGrid from "../utils/modify-grid"
 import { itemListWrapperStyles, itemStyles } from "../styles/item-list"
 
 type DataProps = {
@@ -48,7 +48,7 @@ type DataProps = {
 const Project: React.FC<PageProps<DataProps>> = ({ data: { projects }, location }) => {
 
   const rawItems = [...projects.nodes]
-  const items = modifyProjectGrid(rawItems)
+  const items = modifyGrid(rawItems)
   const itemsCount = items.length
 
   return(
@@ -70,13 +70,13 @@ const Project: React.FC<PageProps<DataProps>> = ({ data: { projects }, location 
       >
         {projects.nodes.length > 0 ? (
           items.map((project, index) => (
-            <GridItem to={project.slug} className="item" key={project.shortTitle} sx={itemStyles} data-testid={project.shortTitle}>
+            <GridItem to={project.slug} className="item" key={project.title} sx={itemStyles} data-testid={project.title }>
               <GatsbyImage
                 loading={index === 0 ? `eager` : `lazy`}
                 image={project.cover.childImageSharp.gatsbyImageData}
                 alt=""
               />
-              <span>{project.shortTitle}</span>
+              <span>{project.title }</span>
             </GridItem>
           ))
         ) : (

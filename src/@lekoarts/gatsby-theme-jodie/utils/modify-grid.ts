@@ -16,21 +16,8 @@ export interface IGridItem {
   __typename: "MdxProject" | "MdxPage"
 }
 
-export interface IGridProject{
-  lang: string
-  slug: string
-  shortTitle: string
-  cover: {
-    childImageSharp: {
-      gatsbyImageData: IGatsbyImageData
-    }
-  }
-  __typename: "MdxProject" | "MdxPage"
-}
-
 
 function defaultResolver(data: IGridItem[]): IGridItem[] {
-  //console.log(data)
   return data
 }
 
@@ -43,15 +30,12 @@ export function filterByLang(
 
 function modifyGrid(
     data: IGridItem[],
-    //resolver = defaultResolver
     resolver = filterByLang
   ): IGridItem[] {
-  console.log(data)
-  //return resolver(data)
   let intl = useIntl()
-  //lengua = (intl.locale !== null) ? intl.locale  : 'es';
   return resolver(data, [intl.locale, null])
 }
+
 
 /**
  * Examples:

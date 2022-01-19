@@ -2,6 +2,10 @@ import * as React from "react"
 import { PageProps } from "gatsby"
 import Page from "../../../components/page"
 
+//import { useIntl  } from "gatsby-plugin-intl"
+//const intl = useIntl()
+//const locale = intl.locale !== "es" ? `/${intl.locale}` : ""
+
 type DataProps = {
   page: {
     lang: string

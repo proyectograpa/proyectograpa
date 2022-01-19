@@ -15,7 +15,7 @@
     "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "override": "cp override/gatsby-node.js 'node_modules/@lekoarts/gatsby-theme-jodie-core/gatsby-node.js'"
+    "override": "cp override/gatsby-node.js 'node_modules/@lekoarts/gatsby-theme-jodie-core/gatsby-node.js' && cp override/templates 'node_modules/@lekoarts/gatsby-theme-jodie-core/src/' -r"
   },
   "dependencies": {
     "@lekoarts/gatsby-theme-jodie": "^3.0.0",

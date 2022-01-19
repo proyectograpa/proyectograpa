@@ -18,7 +18,6 @@ type DataProps = {
       lang: string
       slug: string
       title: string
-      shortTitle: string
       cover: {
         childImageSharp: {
           gatsbyImageData: IGatsbyImageData
